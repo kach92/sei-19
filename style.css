@@ -91,6 +91,7 @@ body{
     font-size:70px;
     margin:0;
     color: yellow;
+
     text-align:center;
     text-shadow: 1px 1px 1px #4f4f00,
         1px 2px 1px #4f4f00,
@@ -419,6 +420,8 @@ border-bottom:4px solid #8e7400;
     left:0;
     padding-bottom:100%;
     visibility:hidden;
+    opacity: 0;
+
 
 
 }
@@ -443,6 +446,7 @@ border-bottom:4px solid #8e7400;
     background: linear-gradient(to bottom ,#ff920b , #F5E49B);
     border:none;
     border-radius: 15px;
+    opacity:0;
 
 
 }
@@ -493,6 +497,7 @@ border-bottom:4px solid #8e7400;
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
     1px 30px 60px rgba(16,16,16,0.4);
+    opacity:0;
 
 
 }

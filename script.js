@@ -1180,40 +1180,64 @@ var startBackAllClicks = function() {
 
 var checkWin = function() {
     var getWinDisplay = document.querySelector(".win-lose-draw");
-    var getDarkShroud = document.querySelector(".dark-shroud");
+
     var getResultContainer = document.querySelector(".resultContainer");
 
     if (parseInt(blackScore.innerHTML) > parseInt(whiteScore.innerHTML)) {
 
         getWinDisplay.innerHTML = `${player1Name} Win!`;
-        getDarkShroud.style.visibility = "visible";
+        startAnimations();
+
         // getWinDisplay.style.animation = "fadein 2s";
 
     } else if (parseInt(blackScore.innerHTML) === parseInt(whiteScore.innerHTML)) {
 
         getWinDisplay.innerHTML = "It is a Draw!!";
-        getDarkShroud.style.visibility = "visible";
+        startAnimations();
         // getWinDisplay.style.animation = "fadein 2s";
         // getResultContainer.style.animation ="fadein 2s 2s forwards";
     } else if (parseInt(blackScore.innerHTML) < parseInt(whiteScore.innerHTML)) {
 
         getWinDisplay.innerHTML = `${player2Name} Win!`;
-        getDarkShroud.style.visibility = "visible";
+        startAnimations();
         // getWinDisplay.style.animation = "fadein 2s";
         // getResultContainer.style.animation ="fadein 2s 2s forwards";
     }
 }
 
-var takeOffShroud = function() {
-    document.querySelector(".dark-shroud").style.visibility = "hidden";
+var startAnimations = function() {
+    var getDarkShroud = document.querySelector(".dark-shroud");
+     var getWinDisplay = document.querySelector(".win-lose-draw");
+
+    getDarkShroud.style.visibility = "visible";
+    getDarkShroud.style.animation = "2s fadein forwards";
+    getWinDisplay.style.animation = "2s fadein forwards";
+
+    setTimeout(function(){
+        var getResultContainer = document.querySelector(".result-container");
+        getResultContainer.style.animation = "2s fadein forwards";
+    },2000);
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////                                      //////////////////////
-//////////////////////    DOCUMENT ON LOAD                    //////////////////////
-//////////////////////                                             //////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
+
+var takeOffShroud = function() {
+    document.querySelector(".dark-shroud").style.visibility = "hidden";
+    document.querySelector(".dark-shroud").style.opacity = "0";
+    document.querySelector(".dark-shroud").style.animation = null;
+    document.querySelector(".win-lose-draw").style.animation = null;
+    document.querySelector(".win-lose-draw").style.opacity = "0";
+    document.querySelector(".result-container").style.animation=null;
+    document.querySelector(".result-container").style.opacity = "0";
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+//////////////////////                                      /////////////////////
+//////////////////////    DOCUMENT ON LOAD                   ////////////////////
+//////////////////////                                       ////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 var restart = function() {
     takeOffShroud();
