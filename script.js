@@ -240,7 +240,9 @@ var initialize = function() {
 var checkOKtoPlace = function(sym, x, y) {
 
     var arr = [checkTopLeft(sym, x, y), checkTop(sym, x, y), checkTopRight(sym, x, y), checkRight(sym, x, y), checkBottomRight(sym, x, y), checkBottom(sym, x, y), checkBottomLeft(sym, x, y), checkLeft(sym, x, y)];
+
     directionToGo = arr;
+
     if (arr.includes(true)) {
         return true
     } else {
@@ -470,19 +472,20 @@ var changeRespectiveTiles = function(target, sym, x, y) {
     var leftSettle = false;
 
     for (i = 0; i < boardLength; i++) {
+
         switch (i) {
             case 0:
                 if (directionToGo[i]) {
                     while (!topLeftSettle) {
                         if (boardArray[y - 1][x - 1] !== null) {
-                            var i = 1;
-                            while (boardArray[y - i][x - i] !== sym) {
-                                boardArray[y - i][x - i] = sym;
+                            var a = 1;
+                            while (boardArray[y - a][x - a] !== sym) {
+                                boardArray[y - a][x - a] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * (y - i) + (x - i)).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * (y - a) + (x - a)).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * (y - i) + (x - i)).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * (y - a) + (x - a)).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             topLeftSettle = true;
 
@@ -494,16 +497,17 @@ var changeRespectiveTiles = function(target, sym, x, y) {
                 break;
             case 1:
                 if (directionToGo[i]) {
+
                     while (!topSettle) {
                         if (boardArray[y - 1][x] !== null) {
-                            var i = 1;
-                            while (boardArray[y - i][x] !== sym) {
-                                boardArray[y - i][x] = sym;
+                            var a = 1;
+                            while (boardArray[y - a][x] !== sym) {
+                                boardArray[y - a][x] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * (y - i) + x).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * (y - a) + x).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * (y - i) + x).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * (y - a) + x).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             topSettle = true;
 
@@ -515,20 +519,27 @@ var changeRespectiveTiles = function(target, sym, x, y) {
                 break;
             case 2:
                 if (directionToGo[i]) {
+
                     while (!topRightSettle) {
+
                         if (boardArray[y - 1][x + 1] !== null) {
-                            var i = 1;
-                            while (boardArray[y - i][x + i] !== sym) {
-                                boardArray[y - i][x + i] = sym;
+
+                            var a = 1;
+                            while (boardArray[y - a][x + a] !== sym) {
+
+                                boardArray[y - a][x + a] = sym;
+
                                 if (sym === "W")
-                                    document.getElementById(boardLength * (y - i) + (x + i)).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * (y - a) + (x + a)).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * (y - i) + (x + i)).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * (y - a) + (x + a)).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
+
                             topRightSettle = true;
 
                         } else {
+
                             topRightSettle = true;
                         }
                     }
@@ -539,14 +550,14 @@ var changeRespectiveTiles = function(target, sym, x, y) {
                 if (directionToGo[i]) {
                     while (!rightSettle) {
                         if (boardArray[y][x + 1] !== null) {
-                            var i = 1;
-                            while (boardArray[y][x + i] !== sym) {
-                                boardArray[y][x + i] = sym;
+                            var a = 1;
+                            while (boardArray[y][x + a] !== sym) {
+                                boardArray[y][x + a] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * y + (x + i)).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * y + (x + a)).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * y + (x + i)).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * y + (x + a)).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             rightSettle = true;
 
@@ -560,14 +571,14 @@ var changeRespectiveTiles = function(target, sym, x, y) {
                 if (directionToGo[i]) {
                     while (!bottomRightSettle) {
                         if (boardArray[y + 1][x + 1] !== null) {
-                            var i = 1;
-                            while (boardArray[y + i][x + i] !== sym) {
-                                boardArray[y + i][x + i] = sym;
+                            var a = 1;
+                            while (boardArray[y + a][x + a] !== sym) {
+                                boardArray[y + a][x + a] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * (y + i) + (x + i)).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * (y + a) + (x + a)).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * (y + i) + (x + i)).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * (y + a) + (x + a)).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             bottomRightSettle = true;
 
@@ -582,14 +593,14 @@ var changeRespectiveTiles = function(target, sym, x, y) {
                 if (directionToGo[i]) {
                     while (!bottomSettle) {
                         if (boardArray[y + 1][x] !== null) {
-                            var i = 1;
-                            while (boardArray[y + i][x] !== sym) {
-                                boardArray[y + i][x] = sym;
+                            var a = 1;
+                            while (boardArray[y + a][x] !== sym) {
+                                boardArray[y + a][x] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * (y + i) + x).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * (y + a) + x).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * (y + i) + x).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * (y + a) + x).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             bottomSettle = true;
 
@@ -605,14 +616,14 @@ var changeRespectiveTiles = function(target, sym, x, y) {
 
                     while (!bottomLeftSettle) {
                         if (boardArray[y + 1][x - 1] !== null) {
-                            var i = 1;
-                            while (boardArray[y + i][x - i] !== sym) {
-                                boardArray[y + i][x - i] = sym;
+                            var a = 1;
+                            while (boardArray[y + a][x - a] !== sym) {
+                                boardArray[y + a][x - a] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * (y + i) + (x - i)).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * (y + a) + (x - a)).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * (y + i) + (x - i)).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * (y + a) + (x - a)).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             bottomLeftSettle = true;
 
@@ -627,14 +638,14 @@ var changeRespectiveTiles = function(target, sym, x, y) {
                 if (directionToGo[i]) {
                     while (!leftSettle) {
                         if (boardArray[y][x - 1] !== null) {
-                            var i = 1;
-                            while (boardArray[y][x - i] !== sym) {
-                                boardArray[y][x - i] = sym;
+                            var a = 1;
+                            while (boardArray[y][x - a] !== sym) {
+                                boardArray[y][x - a] = sym;
                                 if (sym === "W")
-                                    document.getElementById(boardLength * y + (x - i)).firstChild.setAttribute("class", "white-tiles");
+                                    document.getElementById(boardLength * y + (x - a)).firstChild.setAttribute("class", "white-tiles");
                                 else
-                                    document.getElementById(boardLength * y + (x - i)).firstChild.setAttribute("class", "black-tiles");
-                                i++;
+                                    document.getElementById(boardLength * y + (x - a)).firstChild.setAttribute("class", "black-tiles");
+                                a++;
                             }
                             leftSettle = true;
 
@@ -1210,7 +1221,8 @@ var restart = function() {
     while (mainContainer.firstChild) {
         mainContainer.removeChild(mainContainer.firstChild);
     }
-    allBoardInitialisation();
+
+
     counter = 1;
     var getSym = counter % 2 === 0 ? "W" : "B"
     blackScore.innerHTML = "2";
@@ -1228,6 +1240,8 @@ var restart = function() {
         predictionDots(getSym);
 
     } else {
+        startGlow1();
+        stopGlow2();
         botMode = true;
         demo = true;
 
@@ -1242,6 +1256,9 @@ var initAllBackToMainPage = function() {
     stopGlow1();
     stopGlow2();
 
+    stopDualBotMode();
+    document.getElementById("player-name").innerHTML = "AI - White";
+    document.getElementById("bot-name").innerHTML = "AI - Black";
     var mainContainer = document.querySelector(".main-container");
     while (mainContainer.firstChild) {
         mainContainer.removeChild(mainContainer.firstChild);
