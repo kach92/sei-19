@@ -1279,7 +1279,7 @@ var initAllBackToMainPage = function() {
     takeOffShroud();
     stopGlow1();
     stopGlow2();
-
+    mode = null;
     stopDualBotMode();
     document.getElementById("player-name").innerHTML = "AI - White";
     document.getElementById("bot-name").innerHTML = "AI - Black";
@@ -1290,6 +1290,7 @@ var initAllBackToMainPage = function() {
 
     botMode = false;
     demo = false;
+    singlePlayerMode = false;
     counter = 1;
     document.querySelector(".score-container").style.visibility = "hidden";
     blackScore.innerHTML = "2";

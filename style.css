@@ -376,6 +376,7 @@ border-bottom:4px solid #8e7400;
     font-size:22px;
     color:blue;
     box-sizing: border-box;
+    outline:none;
 }
 
 .player2{
@@ -393,6 +394,8 @@ border-bottom:4px solid #8e7400;
     font-size:22px;
     color:red;
     box-sizing: border-box;
+    outline:none;
+
 }
 
 .predictor{
