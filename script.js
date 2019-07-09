@@ -14,6 +14,7 @@ var player1Name = "AI - Black";
 var player2Name = "AI - White";
 
 
+
 var blackScore = document.getElementById("black-score");
 var whiteScore = document.getElementById("white-score");
 
@@ -36,8 +37,9 @@ var addTile = function(event) {
 
     if (checkOKtoPlace(getSym, getX, getY)) {
         removePredictionDots();
-        var aTile = document.createElement("div");
 
+        var aTile = document.createElement("div");
+        event.target.classList.add("test");
         if (getSym === "W") {
             aTile.setAttribute("class", "white-tiles");
             boardArray[getY][getX] = getSym;
@@ -205,6 +207,7 @@ var initialize = function() {
 
             aTile.setAttribute("class", "white-tiles");
             boardArray[getY][getX] = "W"
+
 
         } else {
             aTile.setAttribute("class", "black-tiles");
@@ -718,6 +721,7 @@ var aiTurn = function() {
         checkOKtoPlace(getSym, getX, getY);
         var getTarget = document.getElementById(getY * boardLength + getX);
         var aTile = document.createElement("div");
+        getTarget.classList.add("test");
         if (getSym === "W") {
             aTile.setAttribute("class", "white-tiles");
             boardArray[getY][getX] = getSym;
@@ -968,6 +972,7 @@ var accumulator = function(arr, sym, x, y) {
 }
 
 
+
 var allBoardInitialisation = function(noclick = false) {
     createBoard();
     var k = 0;
@@ -982,9 +987,8 @@ var allBoardInitialisation = function(noclick = false) {
                 console.log("no clicking");
             } else {
                 getSquares[k].addEventListener("click", addTile);
-            }
 
-            // getSquares[k].addEventListener("click", tilePlaceSound)
+            }
             k++;
         }
     }
@@ -998,6 +1002,8 @@ var allBoardInitialisation = function(noclick = false) {
     }
 }
 
+
+
 var tilePlaceSound = function() {
     place.play();
 }
@@ -1008,6 +1014,30 @@ var createBoard = function() {
     boardContainer.setAttribute("class", "main-board");
     var boardFrame = document.createElement("div");
     boardFrame.setAttribute("class", "board-frame");
+
+    //markers
+    // var boardHMarkersContainer = document.createElement("div");
+    // boardHMarkersContainer.setAttribute("class","h-markers-container");
+
+
+    // for(var i=0;i<boardLength;i++){
+    //     var boardHMarkers = document.createElement("div");
+    //     boardHMarkers.setAttribute("class","h-markers");
+    //     boardHMarkersContainer.appendChild(boardHMarkers);
+    //     boardHMarkers.innerHTML = i;
+    // }
+
+    // var boardVMarkersContainer = document.createElement("div");
+    // boardVMarkersContainer.setAttribute("class","v-markers-container");
+
+    // for(var i=0;i<boardLength;i++){
+    //     var boardVMarkers = document.createElement("div");
+    //     boardVMarkers.setAttribute("class","v-markers");
+    //     boardVMarkersContainer.appendChild(boardVMarkers);
+    //     boardVMarkers.innerHTML = String.fromCharCode(65+i);
+    // }
+
+
 
     var squareColorCounter = 0;
 
@@ -1027,6 +1057,8 @@ var createBoard = function() {
         boardContainer.appendChild(row);
     }
     boardFrame.appendChild(boardContainer);
+    // boardFrame.appendChild(boardHMarkersContainer);
+    // boardFrame.appendChild(boardVMarkersContainer);
     container.appendChild(boardFrame);
 
 
@@ -1207,16 +1239,16 @@ var checkWin = function() {
 
 var startAnimations = function() {
     var getDarkShroud = document.querySelector(".dark-shroud");
-     var getWinDisplay = document.querySelector(".win-lose-draw");
+    var getWinDisplay = document.querySelector(".win-lose-draw");
 
     getDarkShroud.style.visibility = "visible";
     getDarkShroud.style.animation = "2s fadein forwards";
     getWinDisplay.style.animation = "2s fadein forwards";
 
-    setTimeout(function(){
+    setTimeout(function() {
         var getResultContainer = document.querySelector(".result-container");
         getResultContainer.style.animation = "2s fadein forwards";
-    },2000);
+    }, 2000);
 }
 
 
@@ -1227,7 +1259,7 @@ var takeOffShroud = function() {
     document.querySelector(".dark-shroud").style.animation = null;
     document.querySelector(".win-lose-draw").style.animation = null;
     document.querySelector(".win-lose-draw").style.opacity = "0";
-    document.querySelector(".result-container").style.animation=null;
+    document.querySelector(".result-container").style.animation = null;
     document.querySelector(".result-container").style.opacity = "0";
 
 }
