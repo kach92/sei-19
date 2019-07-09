@@ -979,6 +979,7 @@ var accumulator = function(arr, sym, x, y) {
 
 var allBoardInitialisation = function(noclick = false) {
     createBoard();
+    takePutSettingsButton();
     var k = 0;
     var getSquares = document.querySelectorAll(".col");
     for (i = 0; i < boardLength; i++) {
@@ -1343,6 +1344,7 @@ var restart = function() {
 }
 
 var initAllBackToMainPage = function() {
+    takeOutSettingsButton();
     takeOffShroud();
     stopGlow1();
     stopGlow2();
@@ -1409,6 +1411,27 @@ var initAllBackToMainPage = function() {
         setTimeout(preStartGame(mode), 100);
     })
 }
+
+var takePutSettingsButton = function(){
+    document.querySelector(".settings").style.visibility = "visible";
+}
+
+var takeOutSettingsButton = function(){
+    document.querySelector(".settings").style.visibility = "hidden";
+}
+
+var takeOutSettings = function(){
+    var getDarkShroud = document.querySelector(".dark-shroud");
+
+    getDarkShroud.style.visibility = "visible";
+    getDarkShroud.style.opacity="1";
+
+
+var getResultContainer = document.querySelector(".result-container");
+getResultContainer.style.opacity = "1";
+
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
 
