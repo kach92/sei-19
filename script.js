@@ -43,10 +43,12 @@ var addTile = function(event) {
         if (getSym === "W") {
             aTile.setAttribute("class", "white-tiles");
             boardArray[getY][getX] = getSym;
+            updateLastMove(getSym,getX,getY);
 
         } else {
             aTile.setAttribute("class", "black-tiles");
             boardArray[getY][getX] = getSym;
+            updateLastMove(getSym,getX,getY);
         }
         changeRespectiveTiles(event.target, getSym, getX, getY);
         tilePlaceSound();
@@ -1015,27 +1017,27 @@ var createBoard = function() {
     var boardFrame = document.createElement("div");
     boardFrame.setAttribute("class", "board-frame");
 
-    //markers
-    // var boardHMarkersContainer = document.createElement("div");
-    // boardHMarkersContainer.setAttribute("class","h-markers-container");
+    // markers
+    var boardHMarkersContainer = document.createElement("div");
+    boardHMarkersContainer.setAttribute("class","h-markers-container");
 
 
-    // for(var i=0;i<boardLength;i++){
-    //     var boardHMarkers = document.createElement("div");
-    //     boardHMarkers.setAttribute("class","h-markers");
-    //     boardHMarkersContainer.appendChild(boardHMarkers);
-    //     boardHMarkers.innerHTML = i;
-    // }
+    for(var i=0;i<boardLength;i++){
+        var boardHMarkers = document.createElement("div");
+        boardHMarkers.setAttribute("class","h-markers");
+        boardHMarkersContainer.appendChild(boardHMarkers);
+        boardHMarkers.innerHTML = i+1;
+    }
 
-    // var boardVMarkersContainer = document.createElement("div");
-    // boardVMarkersContainer.setAttribute("class","v-markers-container");
+    var boardVMarkersContainer = document.createElement("div");
+    boardVMarkersContainer.setAttribute("class","v-markers-container");
 
-    // for(var i=0;i<boardLength;i++){
-    //     var boardVMarkers = document.createElement("div");
-    //     boardVMarkers.setAttribute("class","v-markers");
-    //     boardVMarkersContainer.appendChild(boardVMarkers);
-    //     boardVMarkers.innerHTML = String.fromCharCode(65+i);
-    // }
+    for(var i=0;i<boardLength;i++){
+        var boardVMarkers = document.createElement("div");
+        boardVMarkers.setAttribute("class","v-markers");
+        boardVMarkersContainer.appendChild(boardVMarkers);
+        boardVMarkers.innerHTML = String.fromCharCode(65+i);
+    }
 
 
 
@@ -1057,14 +1059,45 @@ var createBoard = function() {
         boardContainer.appendChild(row);
     }
     boardFrame.appendChild(boardContainer);
-    // boardFrame.appendChild(boardHMarkersContainer);
-    // boardFrame.appendChild(boardVMarkersContainer);
+    boardFrame.appendChild(boardHMarkersContainer);
+    boardFrame.appendChild(boardVMarkersContainer);
     container.appendChild(boardFrame);
 
+    lastMoveDisplayCreator();
 
 }
 
+var lastMoveDisplayCreator = function(){
+    var mainContainer = document.querySelector(".main-container");
+    console.log("test");
+    var createContainer = document.createElement("div");
+    createContainer.setAttribute("class","last-move-display-container");
+    mainContainer.appendChild(createContainer);
 
+}
+
+var updateLastMove = function(sym,x,y){
+    var getLastMoveContainer = document.querySelector(".last-move-display-container");
+
+    var newMove = document.createElement("div");
+    newMove.setAttribute("class","last-move-slot");
+
+
+    var lastMoveTile = document.createElement("div");
+
+    if(sym === "W")
+        lastMoveTile.setAttribute("class","last-move-tile-white");
+    else
+        lastMoveTile.setAttribute("class","last-move-tile-black");
+    newMove.appendChild(lastMoveTile);
+    var lastMovePosition = document.createElement("div");
+    lastMovePosition.setAttribute("class","last-move-number");
+    lastMovePosition.innerHTML = String.fromCharCode(65+y)+(x+1);
+    newMove.appendChild(lastMovePosition);
+
+    // getLastMoveContainer.appendChild(newMove);
+    getLastMoveContainer.insertBefore(newMove,getLastMoveContainer.childNodes[0]);
+}
 
 var askPlayerInfoContainer = function(mode) {
     var mainPageContainer = document.querySelector(".main-page-container")

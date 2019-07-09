@@ -10,6 +10,8 @@
 
 }
 
+
+
 .row{
     width:100%;
     height:12.5%;
@@ -312,13 +314,14 @@ body{
 .main-container{
     width:100%;
     height:420px;
+    display:flex;
+    justify-content: center;
 }
 
 .board-frame{
 
     width: 420px;
     height: 420px;
-    margin: 0 auto;
     padding: 30px;
     box-sizing: border-box;
     background: black;
@@ -543,7 +546,7 @@ border-bottom:4px solid #8e7400;
 }
 
 .h-markers-container{
-    border: 1px solid white;
+    line-height:30px;
     position: absolute;
     display: flex;
     width: 360px;
@@ -555,7 +558,7 @@ border-bottom:4px solid #8e7400;
 
 .h-markers{
     height: 100%;
-    border: 1px solid white;
+
     box-sizing: border-box;
     width: 100%;
     color:white;
@@ -565,7 +568,8 @@ border-bottom:4px solid #8e7400;
 
 
 .v-markers-container{
-    border: 1px solid white;
+
+    line-height:40px;
     position: absolute;
     display: flex;
     width: 32px;
@@ -579,7 +583,7 @@ border-bottom:4px solid #8e7400;
 
 .v-markers{
     height: 100%;
-    border: 1px solid white;
+
     box-sizing: border-box;
     width: 100%;
     color:white;
@@ -587,3 +591,74 @@ border-bottom:4px solid #8e7400;
 
 }
 
+.last-move-display-container{
+    width:154px;
+    margin-left:20px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom ,#ff920b , #F5E49B);
+    border: none;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 4px 4px 4px black;
+    display: inline-block;
+    padding: 10px;
+    border-bottom:2px solid #a36501;
+    border-right:3px solid #a36501;
+    overflow:hidden;
+
+}
+
+.last-move-slot{
+    width: 100%;
+    border: none;
+    border-bottom:3px solid #00afa1;
+    border-right:2px solid #00afa1;
+    height: 60px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom:5px;
+    background:linear-gradient(#a8fff9,#e3f7f5);
+    box-shadow: 2px 2px 4px black;
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+
+}
+
+.last-move-tile-black{
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    background: linear-gradient(to bottom right, black, #565656);
+    box-shadow: 1px 1px 6px;
+}
+
+.last-move-tile-white{
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    background: linear-gradient(to bottom right, #BABABA, white);
+    box-shadow: 1px 1px 6px;
+}
+
+/*.last-move-tile:after{
+    content:"";
+    position:absolute;
+    top:13px;
+    border-radius:50%;
+    left:18px;
+    width:20%;
+    height:27%;
+    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0));
+    transform:rotate(-38deg);
+
+}*/
+
+.last-move-number{
+    font-family: sans-serif;
+    padding-left: 20px;
+    font-size: 29px;
+    font-weight: bold;
+}
