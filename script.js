@@ -727,10 +727,12 @@ var aiTurn = function() {
         if (getSym === "W") {
             aTile.setAttribute("class", "white-tiles");
             boardArray[getY][getX] = getSym;
+            updateLastMove(getSym,getX,getY);
 
         } else {
             aTile.setAttribute("class", "black-tiles");
             boardArray[getY][getX] = getSym;
+            updateLastMove(getSym,getX,getY);
         }
         changeRespectiveTiles(getTarget, getSym, getX, getY);
         tilePlaceSound();
