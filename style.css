@@ -623,7 +623,8 @@ border-bottom:4px solid #8e7400;
     display:flex;
     justify-content: center;
     align-items:center;
-
+    opacity:0;
+    animation:fadein 1s forwards;
 
 }
 
